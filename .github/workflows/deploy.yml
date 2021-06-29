@@ -19,25 +19,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      
-      - name: Ceckout source code
-      - uses: actions/checkout@master
+    - name: Checkout source code
+      uses: actions/checkout@master
 
-      - name: Set up Node.js
-        uses: actions/setup-node@master
-        with:
-          node-version: 14.x
+    - name: Set up Node.js
+      uses: actions/setup-node@master
+      with:
+        node-version: 14.x
 
-      - name: Install dependencies
-        run: yarn install
+    - name: Install dependencies
+      run: yarn install
 
-      - name: Build page
-        run: yarn build
-        env:
-          NODE_ENV: production
+    - name: Build page
+      run: yarn build
+      env:
+        NODE_ENV: production
 
-      - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
